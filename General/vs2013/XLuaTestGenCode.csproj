@@ -20,7 +20,7 @@
     <OutputPath>..\Bin\</OutputPath>
     <BaseIntermediateOutputPath>obj\Any CPU\Debug\XLuaTestGenCode\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>_DEBUG;DEBUG;TRACE;;XLUA_GENERAL;HOTFIX_ENABLE;UNITY_STANDALONE_WIN</DefineConstants>
+    <DefineConstants>_DEBUG;DEBUG;TRACE;;XLUA_GENERAL;HOTFIX_ENABLE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -31,16 +31,13 @@
     <OutputPath>..\Bin\</OutputPath>
     <BaseIntermediateOutputPath>obj\Any CPU\Release\XLuaTestGenCode\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>;XLUA_GENERAL;HOTFIX_ENABLE;UNITY_STANDALONE_WIN</DefineConstants>
+    <DefineConstants>;XLUA_GENERAL;HOTFIX_ENABLE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="xlua">
-      <HintPath>..\..\Assets\Plugins\x86_64\xlua.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\Assets\XLua\Src\CodeEmit.cs">

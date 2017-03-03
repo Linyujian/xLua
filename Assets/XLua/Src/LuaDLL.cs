@@ -14,7 +14,7 @@ namespace XLua.LuaDLL
     using System.Text;
     using XLua;
 
-#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || XLUA_GENERAL
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 #endif
     public delegate int lua_CSFunction(IntPtr L);
@@ -28,8 +28,11 @@ namespace XLua.LuaDLL
         const string LUADLL = "xlua";
 #endif
 
-		[DllImport(LUADLL, CallingConvention = CallingConvention.Cdecl)]
-		public static extern IntPtr lua_tothread(IntPtr L, int index);
+        [DllImport(LUADLL, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr lua_tothread(IntPtr L, int index);
+
+        [DllImport(LUADLL, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int xlua_get_lib_version();
 
         [DllImport(LUADLL, CallingConvention = CallingConvention.Cdecl)]
         public static extern int lua_gc(IntPtr L, LuaGCOptions what, int data);

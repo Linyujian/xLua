@@ -379,12 +379,16 @@ namespace XLua
             }
         }
 
-        public void RemoveDelegateBridge(int reference)
+        public bool AllDelegateBridgeReleased()
         {
-            if (delegate_bridges.ContainsKey(reference))
+            foreach (var kv in delegate_bridges)
             {
-                delegate_bridges.Remove(reference);
+                if (kv.Value.IsAlive)
+                {
+                    return false;
+                }
             }
+            return true;
         }
 
         public void ReleaseLuaBase(RealStatePtr L, int reference, bool is_delegate)
@@ -511,7 +515,7 @@ namespace XLua
             typeIdMap.Add(typeof(LuaCSFunction), type_id);
         }
 		
-		internal Type FindType(string className)
+		internal Type FindType(string className, bool isQualifiedName = false)
 		{
 			foreach(Assembly assembly in assemblies)
 			{
@@ -521,6 +525,27 @@ namespace XLua
 					return klass;
 				}
 			}
+            int p1 = className.IndexOf('[');
+            if (p1 > 0 && !isQualifiedName)
+            {
+                string qualified_name = className.Substring(0, p1 + 1);
+                string[] generic_params = className.Substring(p1 + 1, className.Length - qualified_name.Length - 1).Split(',');
+                for(int i = 0; i < generic_params.Length; i++)
+                {
+                    Type generic_param = FindType(generic_params[i].Trim());
+                    if (generic_param == null)
+                    {
+                        return null;
+                    }
+                    if (i != 0 )
+                    {
+                        qualified_name += ", ";
+                    }
+                    qualified_name = qualified_name + "[" + generic_param.AssemblyQualifiedName + "]";
+                }
+                qualified_name += "]";
+                return FindType(qualified_name, true);
+            }
 			return null;
 		}
 

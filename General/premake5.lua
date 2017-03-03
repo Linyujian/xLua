@@ -33,7 +33,6 @@ files
 defines
 {
 	"XLUA_GENERAL",
-	"UNITY_STANDALONE_WIN",
 }
 
 links
@@ -52,13 +51,15 @@ targetdir "./Tools"
 files
 {
     "./Src/XLuaGenerate.cs",
+    "./Src/XLuaTemplates.Designer.cs",
+    "./Src/XLuaTemplates.resx",
     "../Assets/XLua/Src/Editor/Generator.cs",
+    "../Assets/XLua/Src/Editor/Template/*.txt",
 }
 
 defines
 {
     "XLUA_GENERAL",
-    "UNITY_STANDALONE_WIN",
 }
 
 links
@@ -84,7 +85,6 @@ defines
 {
     "HOTFIX_ENABLE",
     "XLUA_GENERAL",
-    "UNITY_STANDALONE_WIN",
 }
 
 links
@@ -110,8 +110,6 @@ files
 
 defines
 {
-    "XLUA_GENERAL",
-    "UNITY_STANDALONE_WIN",
 }
 
 links
@@ -139,14 +137,12 @@ defines
 {
     "XLUA_GENERAL",
     "HOTFIX_ENABLE",
-    "UNITY_STANDALONE_WIN",
 }
 
 links
 {
     "System",
     "System.Core",
-    "../Assets/Plugins/x86_64/xlua.dll",
 }
 
 
@@ -165,7 +161,6 @@ files
 defines
 {
     "XLUA_GENERAL",
-    "UNITY_STANDALONE_WIN",
 }
 
 links
@@ -193,7 +188,6 @@ files
 defines
 {
     "XLUA_GENERAL",
-    "UNITY_STANDALONE_WIN",
 }
 
 links
